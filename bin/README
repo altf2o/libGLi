@@ -1,0 +1,5 @@
+Apparently git is a pain in the ass and won't let me include
+just a blank directory. So i have to put READMEs in bin\ and lib\
+otherwise it acts like a little bitch and complains the directories
+are missing when it tries to write the DLL and *.a Library files.
+- Here's to git!

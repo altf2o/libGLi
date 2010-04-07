@@ -1,0 +1,15 @@
+# On Windows we have to declare exported functions in libraries as: __declspec(dllexport)
+# To build:
+#    gcc -Iinclude -shared -o bin\libGLi.dll libGLi_src\libGLi.c -Wl,--out-implib,lib\liblibGLi.a -lglut32 -lopengl32 -lglu32 -lz
+# Use mingw32 make:
+#    mingw32-make -f Makefile.win32
+
+all:
+	gcc -Iinclude -shared -o bin\GLi.dll libGLi_src\libGLi.c -Wl,--out-implib,lib\libGLi.a -lglut32 -lopengl32 -lglu32 -lz
+	gcc -Iinclude -shared -o bin\TGA.dll libTGA_src\libTGA.c -Wl,--out-implib,lib\libTGA.a -lglut32 -lopengl32 -lglu32 -lz
+	
+clean:
+	del bin\GLi.dll
+	del bin\TGA.dll
+	del lib\libGLi.a
+	del lib\libTGA.a

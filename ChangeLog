@@ -1,0 +1,32 @@
+2005-03-05  Frank L. Morales II (altf2o)  <altf2o@comcast.net>
+
+* libGLi_src/libGLi.c (gli_load): Changed the logic in a test, to test for the
+  most /expected/ condition. It helped make the flow more obvious, and removed
+  a conditional call to 'free' at the end of the code.
+  
+* libGLi_src/libGLi.c (gli_compress): Re-arranged the way the call to the 
+  'compress2' function looks.
+  
+* libGLi_src/libGLi.c (gli_uncompress): Re-arranged the way the call to the
+  'uncompress' function looks.
+  
+* libGLi_src/libGLi.c (gli_writeOGLBuffer): Re-arranged the way i called the
+  'gli_compress' function.
+  
+* ALL *.h,*.c files: Added a "File ID:" (given by subversion) for every source
+  and header file, in the comment header of each file.
+
+2005-03-03  Frank L. Morales II (altf2o)  <altf2o@comcast.net>
+
+* tools_src/tools_convertTGAtoGLi.c (main): Fixed a potential bug caused by 
+  a call to 'memcpy' where the second parameter /may/ be less than the specified 
+  size.
+  
+* libGLi_src/libGLi.c (gli_writeOGLBuffer): Fixed a potential bug caused by a 
+  call to 'memcpy' where the second parameter /may/ be less then the specified 
+  size.
+  
+2005-03-03  Frank L. Morales II (altf2o)  <altf2o@comcast.net>
+
+* ChangeLog (ChangeLog): Started this changelog :) Lets see if i can stay
+  somewhat organized.

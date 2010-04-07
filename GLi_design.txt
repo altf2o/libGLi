@@ -1,0 +1,60 @@
+GLi, the GLi image format and libGLi are (C) 2005 Frank L. Morales II (altf2o)
+
+[ IMAGE FORMAT ]
+                    
+       ---[   mBytes     ]  -  4 bytes
+       |  [   version    ]  -  1 byte
+       |  [   format     ]  -  4 bytes
+       |  [   width      ]  -  4 bytes
+       |  [   height     ]  -  4 bytes
+Header |  [   pxlDepth   ]  -  1 byte
+       |  [   imgSize    ]  -  4 bytes
+       |  [   author     ]  - 24 bytes
+       |  [   stamp      ]  - 28 bytes
+       |  [   comp       ]  -  1 byte
+       ---[   compSize   ]  -  4 bytes
+       |  [              ]
+       |  [              ]
+       |  [              ]
+Image  |  [              ]
+Data   |  [   Image      ]  - 'imgSize', for uncompressed images.
+       |  [              ]    'compSize', for compressed images.
+       |  [              ]    (all in bytes)
+       |  [              ]
+       ---[              ]
+          
+[ HEADER ]
+  Total header size = 79 bytes (GLI_HEADER_SIZE in GLi.h)
+  
+mBytes   - This is what tells us if our file is a valid GLi image.
+           It MUST be: 0x7F, 'G', 'L', 'i' (MAGIC_BYTES in GLi.h)
+version  - This holds the current version of our GLi image. Right now this
+           MUST be: 1 (one) (GLI_CURRENT_VERSION in GLi.h)
+format   - This holds an OpenGL value that specifies the format our pixel
+           data is in. Ex: RGB, RGBA, etc... Currently it can be one of the
+           following values:
+           GLI_FORMAT_STANDARD \ GLI_FORMAT_32BIT \ GLI_FORMAT_8BIT
+           all defined in GLi.h.
+           (NOTE: GLi pixel data is ALWAYS tightly (byte) packed)
+width    - This specifies the images width in pixels.
+height   - This specifies the images height in pixels.
+pxlDepth - This specifies how many bits per pixel (bpp) our image has. The
+           value is ALWAYS in bytes. Ex: 24bpp, pxlDepth = 3 (bytes).
+author   - This is an array of characters that will hold a valid C-string 
+           containing the authors name or identifying mark.
+stamp    - This is an array of characters that will hold a valid C-string that
+           contains a date and or time stamp. The format of that string is
+           up to the author.
+comp     - If this is: GLI_IMAGE_COMPRESSED then we have compressed image data.
+           For ALL other values we assume raw uncompressed pixel data. (NOTE:
+           If compression is /NOT/ used this will be initialized to: 
+           GLI_IMAGE_NOTCOMPRESSED)
+compSize - If 'comp' is: GLI_IMAGE_COMPRESSED then this will tell us how many 
+           bytes our compressed data is. (NOTE: If compression is /NOT/ used
+           this should be set to 0 (zero).)
+           
+[ IMAGE DATA ]
+
+image    - This is where the actual image data goes. It's size for 
+           uncompressed images will be 'imgSize', otherwise (for compressed
+           images) it's, 'compSize'. (All in bytes)
