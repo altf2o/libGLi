@@ -1,3 +1,5 @@
+[NOTE: Please see additional notes at the bottom]
+
 [ COPYRIGHT NOTICES ]
     OpenGL Image library v1.0
     
@@ -168,3 +170,21 @@ to:  altf2o@gmail.com , please remember to use: GLi Comment\Question  in the
 finds this useful, i currently use it for all my texture mapping needs.
 
 FMorales...
+
+
+[UPDATE 7/20/2010]
+  I have updated my system to Ubuntu 10.04 x86_64. As of this writing this suite
+  of utilities and libraries works flawlessly on both 32 and 64bit platforms.
+  One thing i did have to do is add a couple packages so my system was ready
+  to build:
+
+    sudo apt-get install zlib1g-dev libglut3-dev
+
+  Also once built, we need to add our ./lib/ path to our searchable library path
+  so our applications can find it. For testing, during my current session, I
+  simply use the following while using my Bash shell:
+
+    export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/full/path/to/libGLi/lib/
+
+  If you had any issues running 'make' or running any applications, retry now, it
+  should work just fine.
